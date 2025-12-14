@@ -14,7 +14,7 @@
 
 ## 🖥️ Introducción
 
-Este proyecto consiste en el despliegue de una **arquitectura de 4 capas en alta disponibilidad** utilizando **Vagrant** sobre **Debian Bookworm**, destinada a la instalación de un **CMS WordPress**.
+Este proyecto consiste en el despliegue de una **arquitectura de 4 capas en alta disponibilidad** utilizando **Vagrant** con **Debian Bookworm**.
 
 La arquitectura separa claramente las responsabilidades de cada capa:
 
@@ -33,8 +33,8 @@ Todo el sistema se despliega automáticamente mediante **scripts Bash**.
 
 * **Balanceador**: NGINX como proxy inverso y balanceador HTTP.
 * **Servidores Web**: NGINX sirviendo contenido desde NFS, sin PHP local.
-* **Servidor NFS**: Almacenamiento compartido, PHP-FPM y WordPress.
-* **Base de Datos**: MariaDB en clúster Galera con HAProxy como proxy TCP.
+* **Servidor NFS**: Almacenamiento compartido, PHP-FPM.
+* **Base de Datos**: MariaDB en clúster Galera con HAProxy.
 
 ---
 
@@ -59,7 +59,7 @@ Todo el sistema se despliega automáticamente mediante **scripts Bash**.
 ```
 .
 ├── Vagrantfile
-└── Provisionamiento
+└── Aprovisionamiento
     ├── BL.sh
     ├── Web.sh
     ├── NFS.sh
