@@ -1,5 +1,17 @@
 # Instalación de WordPress en Arquitectura de 4 Capas en Alta Disponibilidad 
 
+## 📑 Índice
+
+*  Introducción
+*  Arquitectura del sistema
+*  Estructura de red
+*  Estructura del proyecto
+*  Aprovisionamiento con Vagrant
+*  Scripts de aprovisionamiento
+*  Funcionamiento de la capa web
+*  Conclusión
+*  Comprobación
+
 ## 🖥️ Introducción
 
 Este proyecto consiste en el despliegue de una **arquitectura de 4 capas en alta disponibilidad** utilizando **Vagrant** sobre **Debian Bookworm**, destinada a la instalación de un **CMS WordPress**.
