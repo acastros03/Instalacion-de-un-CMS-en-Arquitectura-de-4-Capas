@@ -1,6 +1,6 @@
 # Instalación de un CMS en Arquitectura de 4 Capas
 
-📑 ## Índice
+## 📑 Índice
 
 * [Introducción](#🖥️-introducción)
 * [Arquitectura del sistema](#🌐-arquitectura-del-sistema)
