@@ -2,19 +2,22 @@
 
 ## 📑 Índice
 
-* [Introducción](#-introducción)
-* [Arquitectura del sistema](#-arquitectura-del-sistema)
-* [Estructura de red](#-estructura-de-red)
-* [Estructura del proyecto](#-estructura-del-proyecto)
-* [Aprovisionamiento con Vagrant](#-aprovisionamiento-con-vagrant)
-* [Scripts de aprovisionamiento](#-scripts-de-aprovisionamiento)
-* [Funcionamiento de la capa web](#-funcionamiento-de-la-capa-web)
-* [Conclusión](#-conclusión)
-* [Comprobación](#-comprobación)
+* [Introducción](#introduccion)
+* [Arquitectura del sistema](#arquitectura-del-sistema)
+* [Estructura de red](#estructura-de-red)
+* [Estructura del proyecto](#estructura-del-proyecto)
+* [Vagrantfile](#vagrantfile)
+* [Aprovisionamiento con Vagrant](#aprovisionamiento-con-vagrant)
+* [Scripts de aprovisionamiento](#scripts-de-aprovisionamiento)
+* [Funcionamiento de la capa web](#funcionamiento-de-la-capa-web)
+* [Conclusión](#conclusion)
+* [Comprobación](#comprobacion)
+
+---
 
 ## 🖥️ Introducción
 
-Este proyecto consiste en el despliegue de una **arquitectura de 4 capas en alta disponibilidad** utilizando **Vagrant** con **Debian Bookworm**.
+Este proyecto consiste en el despliegue de una **arquitectura de 4 capas en alta disponibilidad** utilizando **Vagrant** con **Debian Bookworm**, orientada a la instalación de un **CMS WordPress**.
 
 La arquitectura separa claramente las responsabilidades de cada capa:
 
@@ -33,8 +36,8 @@ Todo el sistema se despliega automáticamente mediante **scripts Bash**.
 
 * **Balanceador**: NGINX como proxy inverso y balanceador HTTP.
 * **Servidores Web**: NGINX sirviendo contenido desde NFS, sin PHP local.
-* **Servidor NFS**: Almacenamiento compartido, PHP-FPM.
-* **Base de Datos**: MariaDB en clúster Galera con HAProxy.
+* **Servidor NFS**: Almacenamiento compartido, PHP-FPM y código del CMS.
+* **Base de Datos**: MariaDB en clúster Galera con HAProxy como proxy TCP.
 
 ---
 
@@ -42,15 +45,15 @@ Todo el sistema se despliega automáticamente mediante **scripts Bash**.
 
 ### Tabla de direccionamiento IP
 
-| Máquina              | Rol               | IP                        | Red            |
-| -------------------- | ----------------- | ------------------------- | -------------- |
-| BalanceadorAlexandro | Balanceador NGINX | 192.168.2.1 / 192.168.1.1 | Frontend       |
-| ServerWEB1Alexandro  | Servidor Web      | 192.168.2.2               | Web            |
-| ServerWEB2Alexandro  | Servidor Web      | 192.168.2.3               | Web            |
-| ServerNFSAlexandro   | NFS + PHP-FPM     | 192.168.3.1 / 192.168.2.4 | Backend        |
-| ProxyBDAlexandro     | HAProxy MariaDB   | 192.168.4.1 / 192.168.3.2 | BD             |
-| BD1Alexandro         | MariaDB           | 192.168.4.2               | BD             |
-| BD2Alexandro         | MariaDB           | 192.168.4.3               | BD             |
+| Máquina              | Rol               | IP                        | Red      |
+| -------------------- | ----------------- | ------------------------- | -------- |
+| BalanceadorAlexandro | Balanceador NGINX | 192.168.2.1 / 192.168.1.1 | Frontend |
+| ServerWEB1Alexandro  | Servidor Web      | 192.168.2.2               | Web      |
+| ServerWEB2Alexandro  | Servidor Web      | 192.168.2.3               | Web      |
+| ServerNFSAlexandro   | NFS + PHP-FPM     | 192.168.3.1 / 192.168.2.4 | Backend  |
+| ProxyBDAlexandro     | HAProxy MariaDB   | 192.168.4.1 / 192.168.3.2 | BD       |
+| BD1Alexandro         | MariaDB           | 192.168.4.2               | BD       |
+| BD2Alexandro         | MariaDB           | 192.168.4.3               | BD       |
 
 ---
 
@@ -66,6 +69,16 @@ Todo el sistema se despliega automáticamente mediante **scripts Bash**.
     ├── ProxyBD.sh
     ├── BD1.sh
     └── BD2.sh
+```
+
+---
+
+## 📄 Vagrantfile
+
+En este apartado se incluye el fichero `Vagrantfile`, encargado de definir todas las máquinas virtuales, sus interfaces de red y los scripts de aprovisionamiento asociados a cada una de ellas.
+
+```ruby
+# pongo aquí el contenido completo del Vagrantfile
 ```
 
 ---
@@ -112,7 +125,7 @@ Los servidores web:
 
 * No ejecutan PHP localmente
 * Sirven contenido desde NFS
-* Reenvían las peticiones PHP al servidor NFS
+* Reenvían las peticiones PHP al servidor NFS mediante FastCGI
 
 Esto permite escalabilidad, centralización del código y menor carga en los servidores web.
 
