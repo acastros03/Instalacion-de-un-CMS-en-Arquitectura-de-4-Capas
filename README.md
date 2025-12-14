@@ -1,4 +1,4 @@
-# Instalación de WordPress en Arquitectura de 4 Capas en Alta Disponibilidad
+# Instalación de un CMS en Arquitectura de 4 Capas
 
 ## 📑 Índice
 
@@ -44,7 +44,7 @@ Todo el sistema se despliega automáticamente mediante **scripts Bash**.
 
 | Máquina              | Rol               | IP                        | Red            |
 | -------------------- | ----------------- | ------------------------- | -------------- |
-| BalanceadorAlexandro | Balanceador NGINX | 192.168.2.1 / 192.168.1.1 | Frontend / Web |
+| BalanceadorAlexandro | Balanceador NGINX | 192.168.2.1 / 192.168.1.1 | Frontend       |
 | ServerWEB1Alexandro  | Servidor Web      | 192.168.2.2               | Web            |
 | ServerWEB2Alexandro  | Servidor Web      | 192.168.2.3               | Web            |
 | ServerNFSAlexandro   | NFS + PHP-FPM     | 192.168.3.1 / 192.168.2.4 | Backend        |
@@ -112,7 +112,7 @@ Los servidores web:
 
 * No ejecutan PHP localmente
 * Sirven contenido desde NFS
-* Reenvían las peticiones PHP al servidor NFS mediante **FastCGI**
+* Reenvían las peticiones PHP al servidor NFS
 
 Esto permite escalabilidad, centralización del código y menor carga en los servidores web.
 
@@ -128,7 +128,7 @@ La arquitectura desplegada cumple los objetivos del proyecto:
 * Centralización del código y PHP
 * Despliegue automático y reproducible
 
-El sistema es accesible desde la máquina anfitriona y tolerante a fallos en la capa web.
+El sistema es accesible desde la máquina anfitriona.
 
 ---
 
