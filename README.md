@@ -548,4 +548,4 @@ El sistema es accesible desde la máquina anfitriona.
 
 ## 🎬 Comprobación
 
-Video de comprobacion](https://labs-iberotech.ddns.net/)
+[Video de comprobacion](https://labs-iberotech.ddns.net/)
