@@ -2,15 +2,15 @@
 
 ## 📑 Índice
 
-* [Introducción](#introducción)
-* [Arquitectura del sistema](#arquitectura-del-sistema)
-* [Estructura de red](#estructura-de-red)
-* [Estructura del proyecto](#estructura-del-proyecto)
-* [Aprovisionamiento con Vagrant](#aprovisionamiento-con-vagrant)
-* [Scripts de aprovisionamiento](#scripts-de-aprovisionamiento)
-* [Funcionamiento de la capa web](#funcionamiento-de-la-capa-web)
-* [Conclusión](#conclusión)
-* [Comprobación](#comprobación)
+* [Introducción](#Introducción)
+* [Arquitectura del sistema](#Arquitectura-del-sistema)
+* [Estructura de red](#Estructura-de-red)
+* [Estructura del proyecto](#Estructura-del-proyecto)
+* [Aprovisionamiento con Vagrant](#Aprovisionamiento-con-vagrant)
+* [Scripts de aprovisionamiento](#Scripts-de-aprovisionamiento)
+* [Funcionamiento de la capa web](#Funcionamiento-de-la-capa-web)
+* [Conclusión](#Conclusión)
+* [Comprobación](#Comprobación)
 
 ## 🖥️ Introducción
 
